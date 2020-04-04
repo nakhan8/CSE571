@@ -126,14 +126,25 @@ class PlanRouteProblem(search.Problem):
         Heuristic that will be used by search.astar_search()
         """
         "*** YOUR CODE HERE ***"
-        pass
+        goaldistance= ([manhattan_distance_with_heading(node.state, goal) for goal in self.goals])
+        return min (goaldistance)
+       
 
     def actions(self, state):
         """
         Return list of allowed actions that can be made in state
         """
-        "*** YOUR CODE HERE ***"
-        pass
+        actions= ['Forward', 'TurnRight', 'TurnLeft']
+        i= state[2]
+        if i == 0 and (state[0], state[1] + 1) in self.allowed:
+            return actions
+        if i == 1 and (state[0] - 1, state[1]) in self.allowed:
+            return actions
+        if i == 2 and (state[0], state[1] - 1) in self.allowed:
+            return actions
+        if i == 3 and (state[0] + 1, state[1]) in self.allowed:
+            return actions
+        return ['TurnRight', 'TurnLeft']
 
 
     def result(self, state, action):
@@ -141,15 +152,46 @@ class PlanRouteProblem(search.Problem):
         Return the new state after applying action to state
         """
         "*** YOUR CODE HERE ***"
-        pass
+        x = state[2]
+        if action == 'Forward':
+            if x == 0: # North
+                return (state[0],state[1] + 1,state[2])
+            if x == 1: # West
+                return (state[0]-1,state[1],state[2])
+            if x == 2: # South
+                return (state[0],state[1]-1,state[2])
+            if x == 3:  #East
+                return (state[0]+1,state[1],state[2])
+                
+        if action == 'TurnRight':
+            if x == 0: # North
+                return (state[0],state[1],3)
+            if x == 1: # West
+                return (state[0],state[1],0)
+            if x == 2: # South
+                return(state[0],state[1],1)
+            if x == 3:  #East
+                return (state[0],state[1],2)
+
+        if action == 'TurnLeft':
+            if x == 0: # North
+                return (state[0],state[1],1)
+            if x == 1: # West
+                return (state[0],state[1],2)
+            if x == 2: # South
+                return (state[0],state[1],3)
+            if x == 3:  #East
+                return (state[0],state[1],0)
 
     def goal_test(self, state):
         """
         Return True if state is a goal state
         """
         "*** YOUR CODE HERE ***"
-        return True
-
+        for goal in self.goals:
+            if state == goal:
+                return True
+        return False
 #-------------------------------------------------------------------------------
 
 def test_PRP(initial):
@@ -231,28 +273,80 @@ class PlanShotProblem(search.Problem):
         Heuristic that will be used by search.astar_search()
         """
         "*** YOUR CODE HERE ***"
-        pass
+                
+        Spots = []
+
+        for i in self.goals:
+            for k in self.allowed:
+                if (i[0] == k[0]) or (i[1] == k[1]):
+                    Spots.append(k)
+
+        distancetoSpots = [manhattan_distance_with_heading(node.state, goal) for goal in Spots]
+        return min(distancetoSpots)
 
     def actions(self, state):
         """
         Return list of allowed actions that can be made in state
         """
         "*** YOUR CODE HERE ***"
-        pass
-
+        
+        actions= ['Forward', 'TurnRight', 'TurnLeft']
+        if state[2] == 0 and (state[0], state[1] + 1) in self.allowed:
+            return actions
+        if state[2] == 1 and (state[0] - 1, state[1]) in self.allowed:
+            return actions
+        if state[2] == 2 and (state[0], state[1] - 1) in self.allowed:
+            return actions
+        if state[2] == 3 and (state[0] + 1, state[1]) in self.allowed:
+            return actions
+        return ['TurnRight', 'TurnLeft']
+        
+    
     def result(self, state, action):
         """
         Return the new state after applying action to state
         """
         "*** YOUR CODE HERE ***"
-        pass
+        x = state[2]
+        if action == 'Forward':
+            if x == 0: # North
+                return (state[0],state[1] + 1,state[2])
+            if x == 1: # West
+                return (state[0]-1,state[1],state[2])
+            if x == 2: # South
+                return (state[0],state[1]-1,state[2])
+            if x == 3:  #East
+                return (state[0]+1,state[1],state[2])
+                
+        if action == 'TurnRight':
+            if x == 0: # North
+                return (state[0],state[1],3)
+            if x == 1: # West
+                return (state[0],state[1],0)
+            if x == 2: # South
+                return(state[0],state[1],1)
+            if x == 3:  #East
+                return (state[0],state[1],2)
+
+        if action == 'TurnLeft':
+            if x == 0: # North
+                return (state[0],state[1],1)
+            if x == 1: # West
+                return (state[0],state[1],2)
+            if x == 2: # South
+                return (state[0],state[1],3)
+            if x == 3:  #East
+                return (state[0],state[1],0)
 
     def goal_test(self, state):
         """
         Return True if state is a goal state
         """
-        "*** YOUR CODE HERE ***"
-        return True
+        "*** YOUR CODE HERE ***"      
+        for goal in self.goals:
+            if state == goal:
+                return True
+        return False
 
 #-------------------------------------------------------------------------------
 
