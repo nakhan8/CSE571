@@ -1,0 +1,104 @@
+ubuntu@ubuntu:~/rakshith/asu/sem2/cse_571_artificial_intel/wumpus$ python wumpus.py -k
+HybridWumpusAgent.register_environment()
+HybridWumpusAgent.reset()
+HWA.create_wumpus_KB(): adding initial wumpus axioms
+    total number of axioms=38
+    total number of clauses=290
+          >>> time elapsed: 0.043293
+Scores: <HybridWumpusAgent>=0
+  0   1   2   3   4   5    time_step=0
+|---|---|---|---|---|---|
+| # | # | # | # | # | # | 5
+|---|---|---|---|---|---|
+| # |   |   |   |   | # | 4
+|---|---|---|---|---|---|
+| # | W | G | P |   | # | 3
+|---|---|---|---|---|---|
+| # |   |   |   |   | # | 2
+|---|---|---|---|---|---|
+| # | ^ |   | P |   | # | 1
+|---|---|---|---|---|---|
+| # | # | # | # | # | # | 0
+|---|---|---|---|---|---|
+
+------------------------------------------------------------------
+At time 0
+   HWA.make_percept_sentence(): ~Stench0 & ~Breeze0 & ~Glitter0 & ~Bump0 & ~Scream0
+     HWA.agent_program(): kb.tell(percept_sentence):
+         ~Stench0 & ~Breeze0 & ~Glitter0 & ~Bump0 & ~Scream0
+     HWA.infer_and_set_belief_location()
+        --> FAILED TO INFER belief location, assuming at initial location (entrance).
+        Current believed location (inferred): (1, 1)
+          >>> time elapsed while making current location queries: 0.278807
+     HWA.infer_and_set_belief_heading()
+        --> FAILED TO INFER belief heading, assuming initial heading.
+        Current inferred heading: north
+          >>> time elapsed while making belief heading queries:0.066435
+     HWA.agent_program(): Prepare to add temporal axioms
+         Number of clauses in KB before: 295
+       HWA.add_temporal_axioms()
+           number of location_OK axioms:         16
+           number of percept_to_loc axioms:      32
+           number of at_location ssa axioms:     2
+           number of non-location ssa axioms:    6
+           number of mutually_exclusive axioms:  5
+       Total number of axioms being added:  61
+         Number of clauses in KB after: 824087
+         Total clauses added to KB: 823792
+[0] You perceive: ['~Stench', '~Breeze', '~Glitter', '~Bump', '~Scream']
+Enter Action ('?' for list of commands): ?
+
+Available Commands:
+   The following are valid Hunt The Wumpus actions:
+     'TurnRight', 'TurnLeft', 'Forward', 'Grab', 'Climb', 'Shoot', 'Wait'
+   Enter '?' or 'help' to get this command info
+   Enter 'quit' or 'stop' or 'exit' to stop playing
+   Enter 'env' to display current wumpus environment
+   Enter 'kbsat' to check if the agent's KB is satisfiable
+      If the KB is NOT satisfiable, then there's a contradiction that needs fixing.
+      NOTE: A satisfiable KB does not mean there aren't other problems.
+   Enter 'save-axioms' to save all of the KB axioms to 'kb-axioms.txt'
+      This will overwrite any existing 'kb-axioms.txt'
+   Enter 'save-clauses' to save all of the KB clauses to text file 'kb-clauses.txt'
+      This will overwrite any existing 'kb-clauses.txt'
+   Enter 'props' to list all of the proposition bases
+   Queries:
+      qp : Query a single proposition;
+           E.g. 'qp B1_1' or 'qp OK1_1_3', 'qp HeadingWest4'
+      qpl : Query a-temporal location-based proposition at all x,y locations;
+           E.g., 'qpl P' runs all queries of P<x>_<y>
+      qplt : Query temporal and location-based propositions at all x,y locations;
+           E.g., 'qplt OK 4' runs all queries of the OK<x>_<y>_4
+      q! : Run ALL queries for optionally specified time (default is current time);
+           (can be time consuming!)
+
+[0] You perceive: ['~Stench', '~Breeze', '~Glitter', '~Bump', '~Scream']
+Enter Action ('?' for list of commands): kbsat
+Agent KB is satisfiable
+
+[0] You perceive: ['~Stench', '~Breeze', '~Glitter', '~Bump', '~Scream']
+Enter Action ('?' for list of commands): quit
+<HybridWumpusAgent> perceives ['~Stench', '~Breeze', '~Glitter', '~Bump', '~Scream'] and does Stop
+
+Current Wumpus Environment:
+Scores: <HybridWumpusAgent>=-1
+  0   1   2   3   4   5    time_step=1
+|---|---|---|---|---|---|
+| # | # | # | # | # | # | 5
+|---|---|---|---|---|---|
+| # |   |   |   |   | # | 4
+|---|---|---|---|---|---|
+| # | W | G | P |   | # | 3
+|---|---|---|---|---|---|
+| # |   |   |   |   | # | 2
+|---|---|---|---|---|---|
+| # | ^ |   | P |   | # | 1
+|---|---|---|---|---|---|
+| # | # | # | # | # | # | 0
+|---|---|---|---|---|---|
+
+DONE.
+number_of_clauses_over_epochs: [824087]
+belief_loc_query_times: [0.278807]
+Final Scores: <HybridWumpusAgent>=-1
+

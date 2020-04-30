@@ -1,0 +1,51 @@
+ubuntu@ubuntu:~/rakshith/asu/sem2/cse_571_artificial_intel/wumpus$ python wumpus.py -y -l wumpus_2x3
+Loaded layout 'wumpus_2x3'
+HybridWumpusAgent.register_environment()
+HybridWumpusAgent.reset()
+HWA.create_wumpus_KB(): adding initial wumpus axioms
+    total number of axioms=18
+    total number of clauses=77
+          >>> time elapsed: 0.009077
+Scores: <HybridWumpusAgent>=0
+  0   1   2   3   4    time_step=0
+|---|---|---|---|---|
+| # | # | # | # | # | 3
+|---|---|---|---|---|
+| # | W | G | P | # | 2
+|---|---|---|---|---|
+| # | ^ |   | P | # | 1
+|---|---|---|---|---|
+| # | # | # | # | # | 0
+|---|---|---|---|---|
+
+HWA.agent_program(): at time 0
+   HWA.make_percept_sentence(): Stench0 & ~Breeze0 & ~Glitter0 & ~Bump0 & ~Scream0
+     HWA.agent_program(): kb.tell(percept_sentence):
+         Stench0 & ~Breeze0 & ~Glitter0 & ~Bump0 & ~Scream0
+     HWA.infer_and_set_belief_location()
+        --> FAILED TO INFER belief location, assuming at initial location (entrance).
+        Current believed location (inferred): (1, 1)
+          >>> time elapsed while making current location queries: 0.031482
+     HWA.infer_and_set_belief_heading()
+        --> FAILED TO INFER belief heading, assuming initial heading.
+        Current inferred heading: north
+          >>> time elapsed while making belief heading queries:0.026037
+     HWA.agent_program(): Prepare to add temporal axioms
+         Number of clauses in KB before: 82
+       HWA.add_temporal_axioms()
+           number of location_OK axioms:         6
+           number of percept_to_loc axioms:      12
+           number of at_location ssa axioms:     2
+           number of non-location ssa axioms:    6
+           number of mutually_exclusive axioms:  5
+       Total number of axioms being added:  31
+         Number of clauses in KB after: 823781
+         Total clauses added to KB: 823699
+
+
+
+   HWA.agent_program(): No current plan, find one...
+     HWA.find_OK_locations()
+       Ask if Wumpus is Alive:
+         Is Wumpus Alive? : Unknown!   (This should be known)
+
